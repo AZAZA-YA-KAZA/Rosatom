@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'authorization/css/auth.css' %}"> <!-- Подключение CSS файла -->
+</head>
+<body>
+<img src="{% static 'image/ros.png' %}" width="50">
+<h1>Авторизация</h1>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="vxod">Войти</button>
+</form>
+{% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+{% endif %}
+</body>
+</html>
