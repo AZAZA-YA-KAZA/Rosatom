@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'chats/css/chat-block.css' %}">
+</head>
+<body>
+<!--wrapper start-->
+<div class="wrapper">
+<!--sidebar start-->
+<div class="sidebar">
+   Боковая панель она может распологаться как слева так и справа
+</div>
+<!--sidebar end-->
+<!--content start-->
+<div class="content">
+    <div class="container">
+  <img src="/w3images/bandmember.jpg" alt="Avatar">
+  <p>Hello. How are you today?</p>
+  <span class="time-right">11:00</span>
+</div>
+
+<div class="container darker">
+  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
+  <p>Hey! I'm fine. Thanks for asking!</p>
+  <span class="time-left">11:01</span>
+</div>
+   Содержание контента тут может быть меню промо ролики и т.д.
+</div>
+<!--content end-->
+</div><!--wrapper end-->
+</body>
+</html>
