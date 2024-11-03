@@ -12,6 +12,36 @@
 <div class="wrapper">
 <!--sidebar start-->
     <div class="sidebar">
+        <div class="create">
+            <button type="button" id="addChatBtn">Добавить чат</button>
+            <div id="modal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Создать новый чат</h2>
+                    <label for="chatType">Выберите тип:</label>
+                    <select id="chatType">
+                        <option value="group">Создать группу</option>
+                        <option value="private">Создать чат</option>
+                    </select>
+                    <div id="groupOptions" class="options hidden">
+                        <label for="groupName">Имя группы:</label>
+                        <input type="text" id="groupName" placeholder="Введите имя группы">
+                        <label for="participants">Выберите участников:</label>
+                        <select id="participants" multiple>
+                            <option value="user1">Пользователь 1</option>
+                            <option value="user2">Пользователь 2</option>
+                            <option value="user3">Пользователь 3</option>
+                        </select>
+                    </div>
+                    <div id="privateOptions" class="options hidden">
+                        <label for="phoneNumber">Номер телефона:</label>
+                        <input type="text" id="phoneNumber" placeholder="Введите номер телефона">
+                    </div>
+                    <button id="createChatBtn">Создать чат</button>
+                </div>
+            </div>
+            <script src="{%static 'chats/js/script.js'%}"></script>
+        </div>
         <div class="users">
             <div class="chat_user">
               <img src="{% static 'chats/image/img.png' %}">
@@ -19,8 +49,13 @@
             </div>
         </div>
         <div class="exit">
-            <button type="ex">Выход</button>
+            <button type="button" id="exitButton">Выход</button>
         </div>
+        <script>
+            document.getElementById('exitButton').addEventListener('click', function() {
+                window.location.href = '{% url "logout" %}'; // Используем URL-имя для перехода на страницу выхода
+            });
+        </script>
     </div>
     <!--sidebar end-->
     <!--content start-->
@@ -64,15 +99,8 @@
         </div>
     </div>
     <div class="otpr">
-    <form class="send_form" method="post">
-        <p class="p">QWERTnvlkjh;loh;uh;iuhiugiygiyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyymnfjygiYQWERTnvlkjh;loh;uh;iuhiugiygiyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyymnfjygiYUI</p>
-        {% csrf_token %}
-        <table class="centered">
-            {{ form.as_table }}
-        </table>
-    </form>
-        <div class="button">
-        <button type="send">Отправить</button>
+        <textarea class="send_form" placeholder="Введите ваше сообщение" rows="3"></textarea>        <div class="button">
+        <button type="submit">Отправить</button>
             </div>
     </div>
 </div>

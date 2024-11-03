@@ -3,5 +3,6 @@ from django.urls import path
 from chat import views
 
 urlpatterns = [
-    path("", views.chat)
+    path("<int:id>/", views.chat),
+    path('logout/', views.logout_view, name='logout'),
 ]

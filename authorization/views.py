@@ -17,7 +17,9 @@ def authotiz(request):
                 user = Auth.objects.get(login=login)
                 print(password, user.password)
                 if password == user.password:
-                    return redirect('/reg')  # Замените на вашу страницу успеха
+                    id = Auth.objects.get(login=login).user_id
+                    print(id)
+                    return redirect(f'/chat/{id}')  # Замените на вашу страницу успеха
                 else:
                     error_message = "Пользовательские данные некорректны"
                     return render(request, 'authorization/auth.html', {'form': form, 'error_message': error_message})
