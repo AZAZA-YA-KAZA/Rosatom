@@ -4,5 +4,4 @@ from authorization import views
 
 urlpatterns = [
     path('', views.authotiz)
-
 ]

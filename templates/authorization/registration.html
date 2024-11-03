@@ -5,11 +5,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static authorization/auth/css.auth.css %}">
+    <link rel="stylesheet" href="{% static 'authorization/css/auth.css' %}">
 </head>
 <body>
-<img src="{% static 'image/ros.png' %}">
+<img src="{% static 'authorization/image/ros.png' %}">
 <h1>Регистрация</h1>
-
+<form method="post">
+    {% csrf_token %}
+    <table class="centered">
+    {{ form.as_table }}
+</table>
+    <button type="vxod">Регистрация</button>
+</form>
+{% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+{% endif %}
 </body>
 </html>

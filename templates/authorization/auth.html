@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="{% static 'authorization/css/auth.css' %}"> <!-- Подключение CSS файла -->
 </head>
 <body>
-<img src="{% static 'image/ros.png' %}">
+<img src="{% static 'authorization/image/ros.png' %}">
 <h1>Авторизация</h1>
 <form method="post">
     {% csrf_token %}
-    <table>
-    {{form.as_table}}
-        </table>
+    <table class="centered">
+    {{ form.as_table }}
+</table>
     <button type="vxod">Войти</button>
 </form>
 {% if error_message %}

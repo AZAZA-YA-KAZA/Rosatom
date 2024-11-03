@@ -9,6 +9,6 @@ img{
     width: 100px;
     height: auto;
 }
-table{
-    text-align: center;
+table.centered {
+    margin:0 auto;
 }
