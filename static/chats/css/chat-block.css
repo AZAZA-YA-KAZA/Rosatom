@@ -5,16 +5,45 @@
   height: 97vh;
   }
 /* wrapper end*/
+.contet {
+position: relative;
+  display: inline-block;
+  width: 75%;
+  height: 100%;
+  }
 
 /* content start*/
 .content {
+position: relative;
   display: inline-block;
-  width: 70%;
-  height: 100%;
-  vertical-align: top;
-  border: 1px solid #000;
+  width: 100%;
+  height: calc(100% - 100px);
+  overflow-y: scroll; /* Скрываем переполнение */
   }
 /* content end*/
+.otpr{
+position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  border: 1px solid #ccc;
+  }
+.send_form{
+position: relative;
+  display: inline-block;
+  width: 100%;
+  height: calc(100% - 20px);
+   vertical-align: top;
+   border: 1px solid #ccc;
+  overflow-y: scroll;*/ /* Скрываем переполнение */
+  }
+.button{
+position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 20px;
+  border: 1px solid #ccc;
+  }
 
 /* sidebar start*/
 .sidebar {
@@ -25,20 +54,55 @@
    border: 1px solid #ccc;
    }
 /* sidebar end*/
+/* sidebar start*/
+.users {
+   display: inline-block;
+   width: 100%;
+   height: calc(100% - 20px);
+   overflow-y: scroll;
+   }
+/* sidebar end*/
+/* sidebar start*/
+.exit {
+   display: inline-block;
+   width: 100%;
+   height: 20px;
+   }
+/* sidebar end*/
+
+
+/* Chat containers */
+.chat_user {
+    border: 2px solid #bdbdbd;
+    background-color: #bdbdbd;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0px 0px;
+}
+.chat_user img {
+    float: left;
+    max-width: 20px;
+    border-radius: 50%;
+}
 
 /* Chat containers */
 .container {
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
+    border: 2px solid #bdbdbd;
+    background-color: #bdbdbd;
+    width: 80%;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px 10px;
 }
 
 /* Darker chat container */
-.darker {
-    border-color: #ccc;
-    background-color: #ddd;
+.darker { /* Позволяет элементам переноситься на следующую строку */
+    border-color: #7CBEE0FF;
+    background-color: #7CBEE0FF;
+    margin-left: auto; /* Отодвигает блок вправо */
+    margin-top: 10px; /* Отступ сверху */
+    max-width: 300px; /* Задайте максимальную ширину блока */
+    overflow-wrap: break-word; /* Обеспечивает перенос длинных слов */
 }
 
 /* Clear floats */
@@ -51,27 +115,16 @@
 /* Style images */
 .container img {
     float: left;
-    max-width: 60px;
-    width: 100%;
+    max-width: 40px;
     margin-right: 20px;
     border-radius: 50%;
 }
-
-/* Style the right image */
-.container img.right {
-    float: right;
-    margin-left: 20px;
-    margin-right:0;
-}
-
 /* Style time text */
 .time-right {
     float: right;
-    color: #aaa;
+    color: black;
 }
 
-/* Style time text */
-.time-left {
-    float: left;
-    color: #999;
+.p {
+ word-wrap: break-word;
 }

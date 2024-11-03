@@ -11,26 +11,72 @@
 <!--wrapper start-->
 <div class="wrapper">
 <!--sidebar start-->
-<div class="sidebar">
-   Боковая панель она может распологаться как слева так и справа
+    <div class="sidebar">
+        <div class="users">
+            <div class="chat_user">
+              <img src="{% static 'chats/image/img.png' %}">
+              <p>Login_user</p>
+            </div>
+        </div>
+        <div class="exit">
+            <button type="ex">Выход</button>
+        </div>
+    </div>
+    <!--sidebar end-->
+    <!--content start-->
+<div class="contet">
+    <div class="content">
+        <div class="container">
+            <img src="{% static 'chats/image/img.png' %}">
+            <p>Login_user</p>
+            <p class="p">qwevdsgbrsntttttttttttttttttttttttttttttttttttttttttttttsdgbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbggetetnwtrnnttttttttttttttttttrtyuiop</p>
+            <p class="p">qwertyuiop</p>
+            <span class="time-right">11:00</span>
+        </div>
+        <div class="container darker">
+            <p class="p">qwevdsgbrsntttttttttttttttttttttttttttttttttttttttttttttsdgbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbggetetnwtrnnttttttttttttttttttrtyuiop</p>
+            <p class="p">qwertyuiop</p>
+            <span class="time-right">11:01</span>
+        </div>
+        <div class="container">
+            <img src="{% static 'chats/image/img.png' %}">
+            <p>Login_user</p>
+            <p class="p">qwevdsgbrsntttttttttttttttttttttttttttttttttttttttttttttsdgbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbggetetnwtrnnttttttttttttttttttrtyuiop</p>
+            <p class="p">qwertyuiop</p>
+            <span class="time-right">11:00</span>
+        </div>
+        <div class="container darker">
+            <p class="p">qwevdsgbrsntttttttttttttttttttttttttttttttttttttttttttttsdgbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbggetetnwtrnnttttttttttttttttttrtyuiop</p>
+            <p class="p">qwertyuiop</p>
+            <span class="time-right">11:01</span>
+        </div>
+        <div class="container">
+            <img src="{% static 'chats/image/img.png' %}">
+            <p>Login_user</p>
+            <p class="p">qwevdsgbrsntttttttttttttttttttttttttttttttttttttttttttttsdgbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbggetetnwtrnnttttttttttttttttttrtyuiop</p>
+            <p class="p">qwertyuiop</p>
+            <span class="time-right">11:00</span>
+        </div>
+        <div class="container darker">
+            <p class="p">qwevdsgbrsntttttttttttttttttttttttttttttttttttttttttttttsdgbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbggetetnwtrnnttttttttttttttttttrtyuiop</p>
+            <p class="p">qwertyuiop</p>
+            <span class="time-right">11:01</span>
+        </div>
+    </div>
+    <div class="otpr">
+    <form class="send_form" method="post">
+        <p class="p">QWERTnvlkjh;loh;uh;iuhiugiygiyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyymnfjygiYQWERTnvlkjh;loh;uh;iuhiugiygiyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyymnfjygiYUI</p>
+        {% csrf_token %}
+        <table class="centered">
+            {{ form.as_table }}
+        </table>
+    </form>
+        <div class="button">
+        <button type="send">Отправить</button>
+            </div>
+    </div>
 </div>
-<!--sidebar end-->
-<!--content start-->
-<div class="content">
-    <div class="container">
-  <img src="/w3images/bandmember.jpg" alt="Avatar">
-  <p>Hello. How are you today?</p>
-  <span class="time-right">11:00</span>
-</div>
-
-<div class="container darker">
-  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
-  <p>Hey! I'm fine. Thanks for asking!</p>
-  <span class="time-left">11:01</span>
-</div>
-   Содержание контента тут может быть меню промо ролики и т.д.
-</div>
-<!--content end-->
+    <!--content end-->
 </div><!--wrapper end-->
 </body>
 </html>
