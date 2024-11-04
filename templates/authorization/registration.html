@@ -15,8 +15,9 @@
     <table class="centered">
     {{ form.as_table }}
 </table>
-    <button type="vxod">Регистрация</button>
+    <button type="submit">Регистрация</button>
 </form>
+<button type="button" onclick="window.location.href='/auth/'">Авторизация</button>
 {% if error_message %}
     <p style="color: red;">{{ error_message }}</p>
 {% endif %}

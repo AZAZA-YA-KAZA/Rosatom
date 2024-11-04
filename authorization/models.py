@@ -13,7 +13,8 @@ class Auth(models.Model):
 
 class Chats(models.Model):
     chat_id = models.IntegerField(primary_key=True)
-    title = models.CharField(max_length=20)
     body = models.TextField()
-    who_user_id = models.ForeignKey(Auth, on_delete=CASCADE)
+    otpr_id = models.IntegerField()
+    who_user1 = models.ForeignKey(Auth, related_name="on", on_delete=CASCADE)
+    who_user2 = models.ForeignKey(Auth, related_name="tw", on_delete=CASCADE)
     created = models.DateTimeField(auto_now_add=True)

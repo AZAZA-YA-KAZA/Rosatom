@@ -19,17 +19,17 @@
             {% if error_message %}
                 <p style="color: red;">{{ error_message }}</p>
             {% endif %}
-            {% if chat.exists %}
-                {% for ch in chat %}
-                    {% if ch.who_user1.user_id != id %}
-                        <a href="{% url 'chat_new' id1=id id2=ch.who_user1.user_id%}">
+            {% if chats.exists %}
+                {% for ch in chats %}
+                    {% if ch.who_user1.user_id != id1 %}
+                        <a href="{% url 'chat_new' id1=id1 id2=ch.who_user1.user_id%}">
                             <div class="chat_user" onclick="openChat">
                                 <img src="{% static 'chats/image/img.png' %}">
                                 <p class="p">{{ch.who_user1.login}}</p>
                             </div>
                         </a>
                     {% else %}
-                        <a href="{% url 'chat_new' id1=id id2=ch.who_user2.user_id%}">
+                        <a href="{% url 'chat_new' id1=ch.who_user1.user_id id2=ch.who_user2.user_id%}">
                             <div class="chat_user" onclick="openChat">
                                 <img src="{% static 'chats/image/img.png' %}">
                                 <p class="p">{{ch.who_user2.login}}</p>
@@ -84,6 +84,38 @@
     <!--sidebar end-->
     <!--content start-->
     <div class="contet">
+        <div class="content" id="chat-container">
+            {% if chat.exists %}
+                {% for ch in chat %}
+                    {% if ch.otpr_id == id2 %}
+                        <div class="container">
+                            <img src="{% static 'chats/image/img.png' %}">
+                            {% if ch.who_user1.user_id == id1 %}
+                                <p class="p">{{ch.who_user2.login}}</p>
+                            {% else %}
+                                <p class="p">{{ch.who_user1.login}}</p>
+                            {% endif %}
+                            <p class="p">{{ch.body}}</p>
+                            <span class="time-right">{{ch.created}}</span>
+                        </div>
+                    {% endif %}
+                    {% if ch.otpr_id == id1 %}
+                        <div class="container darker">
+                            <p class="p">{{ch.body}}</p>
+                            <span class="time-right">{{ch.created}}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="otpr">
+            <textarea class="send_form" placeholder="Введите ваше сообщение" rows="3"></textarea>
+            <div class="button">
+                <!--<form method="post">-->
+                    <button type="submit">Отправить</button>
+                <!--</form>-->
+            </div>
+        </div>
     </div>
     <!--content end-->
 </div><!--wrapper end-->
