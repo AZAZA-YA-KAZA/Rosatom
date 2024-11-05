@@ -8,34 +8,25 @@
     <link rel="stylesheet" href="{% static 'chats/css/chat-block.css' %}">
 </head>
 <body>
-<!--wrapper start-->
+        <!--wrapper start-->
 <div class="wrapper">
 <!--sidebar start-->
     <div class="sidebar">
         <div class="create">
             <button type="button" id="addChatBtn">Добавить чат</button>
-        </div>
+            </div>
         <div class="users">
             {% if error_message %}
                 <p style="color: red;">{{ error_message }}</p>
             {% endif %}
             {% if chat.exists %}
-                {% for ch in chat %}
-                    {% if ch.who_user1.user_id != id %}
-                        <a href="{% url 'chat_new' id1=id id2=ch.who_user1.user_id%}">
-                            <div class="chat_user" onclick="openChat">
-                                <img src="{% static 'chats/image/img.png' %}">
-                                <p class="p">{{ch.who_user1.login}}</p>
-                            </div>
-                        </a>
-                    {% else %}
-                        <a href="{% url 'chat_new' id1=id id2=ch.who_user2.user_id%}">
-                            <div class="chat_user" onclick="openChat">
-                                <img src="{% static 'chats/image/img.png' %}">
-                                <p class="p">{{ch.who_user2.login}}</p>
-                            </div>
-                        </a>
-                    {% endif %}
+                {% for i in arr %}
+                    <a href="{% url 'chat_new' id1=id id2=i.user_id %}">
+                        <div class="chat_user" onclick="openChat">
+                            <img src="{% static 'chats/image/img.png' %}">
+                            <p class="p">{{ i.login }}</p>
+                        </div>
+                    </a>
                 {% endfor %}
             {% else %}
             <p class="p">Чатов нет</p>

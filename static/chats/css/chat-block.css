@@ -5,46 +5,33 @@
   height: 97vh;
   }
 /* wrapper end*/
-.contet {
-position: relative;
-  display: inline-block;
-  width: 75%;
-  height: 100%;
-  }
-
-/* content start*/
 .content {
 position: relative;
   display: inline-block;
   width: 100%;
   height: calc(100% - 100px);
-  overflow-y: scroll; /* Скрываем переполнение */
+  overflow-y: scroll;
   }
+
+.contet {
+position: relative;
+  display: inline-block;
+      width: 75%;
+  height: 100%;/* Скрываем переполнение */
+}
+/* content start*/
 /* content end*/
-.otpr{
-position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100px;
-  }
-.send_form{
-position: relative;
-  display: inline-block;
-  width: 100%;
-  height: calc(100% - 23px);
-  resize: none;
-  overflow-y: scroll; /* Скрываем переполнение */
-  }
 .button{
 position: relative;
   display: inline-block;
-  width: 100%;
+  width: 50%;
   height: 20px;
   }
 
 /* sidebar start*/
 .sidebar {
-   display: inline-block;
+position: relative;
+  display: inline-block;
    width: 20%;
    height: 100%;
    }

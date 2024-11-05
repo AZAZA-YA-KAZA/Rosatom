@@ -20,22 +20,13 @@
                 <p style="color: red;">{{ error_message }}</p>
             {% endif %}
             {% if chats.exists %}
-                {% for ch in chats %}
-                    {% if ch.who_user1.user_id != id1 %}
-                        <a href="{% url 'chat_new' id1=id1 id2=ch.who_user1.user_id%}">
-                            <div class="chat_user" onclick="openChat">
-                                <img src="{% static 'chats/image/img.png' %}">
-                                <p class="p">{{ch.who_user1.login}}</p>
-                            </div>
-                        </a>
-                    {% else %}
-                        <a href="{% url 'chat_new' id1=ch.who_user1.user_id id2=ch.who_user2.user_id%}">
-                            <div class="chat_user" onclick="openChat">
-                                <img src="{% static 'chats/image/img.png' %}">
-                                <p class="p">{{ch.who_user2.login}}</p>
-                            </div>
-                        </a>
-                    {% endif %}
+                {% for i in arr %}
+                    <a href="{% url 'chat_new' id1=id1 id2=i.user_id %}">
+                        <div class="chat_user" onclick="openChat">
+                            <img src="{% static 'chats/image/img.png' %}">
+                            <p class="p">{{ i.login }}</p>
+                        </div>
+                    </a>
                 {% endfor %}
             {% else %}
             <p class="p">Чатов нет</p>
@@ -48,7 +39,7 @@
                 {% for field in form %}
                     <p>{{ field }}</p>  <!-- Отображаем только поле ввода без метки -->
                 {% endfor %}
-                <button type="submit">Создать чат</button>
+                <button type="submit" name="add">Создать чат</button>
                 </form>
         </div>
         <div class="exit">
@@ -84,10 +75,10 @@
     <!--sidebar end-->
     <!--content start-->
     <div class="contet">
-        <div class="content" id="chat-container">
+        <div class="content">
             {% if chat.exists %}
                 {% for ch in chat %}
-                    {% if ch.otpr_id == id2 %}
+                    {% if ch.otpr_id == id2  and ch.body != "" and ch.body != None %}
                         <div class="container">
                             <img src="{% static 'chats/image/img.png' %}">
                             {% if ch.who_user1.user_id == id1 %}
@@ -99,7 +90,7 @@
                             <span class="time-right">{{ch.created}}</span>
                         </div>
                     {% endif %}
-                    {% if ch.otpr_id == id1 %}
+                    {% if ch.otpr_id == id1 and ch.body != "" and ch.body != None %}
                         <div class="container darker">
                             <p class="p">{{ch.body}}</p>
                             <span class="time-right">{{ch.created}}</span>
@@ -108,14 +99,13 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <div class="otpr">
-            <textarea class="send_form" placeholder="Введите ваше сообщение" rows="3"></textarea>
-            <div class="button">
-                <!--<form method="post">-->
-                    <button type="submit">Отправить</button>
-                <!--</form>-->
-            </div>
-        </div>
+        <form method="post">
+                {% csrf_token %}
+                {% for field in formsend %}
+                    <p>{{ field }}</p>  <!-- Отображаем только поле ввода без метки -->
+                {% endfor %}
+            <button class="button" type="submit" name="send">Отправить</button>
+        </form>
     </div>
     <!--content end-->
 </div><!--wrapper end-->
