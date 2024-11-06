@@ -45,7 +45,7 @@ password - ``` root```
 ![image](https://github.com/user-attachments/assets/d0433b91-4726-4e5f-9fd6-dd20c6866ed3)
 
 ## Чаты
-После решистрации / авторизации, мы переходим к самому чату:
+После регистрации / авторизации, мы переходим к самому чату:
 ![image](https://github.com/user-attachments/assets/d6af3ed4-fbb1-481a-9b95-356e142b017a)
 По умолчанию создаётся диалог `root`. Здесть будут приходит сообщения от модератора.
 
