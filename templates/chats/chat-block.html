@@ -13,20 +13,31 @@
 <!--sidebar start-->
     <div class="sidebar">
         <div class="create">
-            <button type="button" id="addChatBtn">Добавить чат</button>
-            </div>
+            {% if id != 1 %}
+                <button type="button" id="addChatBtn">Добавить чат</button>
+            {% endif %}
+        </div>
         <div class="users">
             {% if error_message %}
                 <p style="color: red;">{{ error_message }}</p>
             {% endif %}
             {% if chat.exists %}
                 {% for i in arr %}
-                    <a href="{% url 'chat_new' id1=id id2=i.user_id %}">
-                        <div class="chat_user" onclick="openChat">
-                            <img src="{% static 'chats/image/img.png' %}">
-                            <p class="p">{{ i.login }}</p>
-                        </div>
-                    </a>
+                    {% if id != 1 %}
+                        <a href="{% url 'chat_new' id1=id id2=i.0.user_id %}">
+                            <div class="chat_user" onclick="openChat">
+                                <img src="{% static 'chats/image/img.png' %}">
+                                <p class="p">{{ i.0.login }}</p>
+                            </div>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'chat_mod' id=id id1=i.0.user_id id2=i.1.user_id %}">
+                            <div class="chat_user" onclick="openChat">
+                                <img src="{% static 'chats/image/img.png' %}">
+                                <p class="p">{{ i.0.login }} - {{ i.1.login }}</p>
+                            </div>
+                        </a>
+                    {% endif %}
                 {% endfor %}
             {% else %}
             <p class="p">Чатов нет</p>

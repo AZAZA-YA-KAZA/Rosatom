@@ -10,6 +10,7 @@ class Auth(models.Model):
     password = models.TextField()
     tel = models.CharField(max_length=20)
     email = models.EmailField(default='default@example.com')
+    status = models.IntegerField(default=0)
 
 class Chats(models.Model):
     chat_id = models.IntegerField(primary_key=True)

@@ -12,35 +12,23 @@
 <div class="wrapper">
 <!--sidebar start-->
     <div class="sidebar">
-        <div class="create">
-            <button type="button" id="addChatBtn">Добавить чат</button>
-        </div>
+        <div class="create"></div>
         <div class="users">
             {% if error_message %}
                 <p style="color: red;">{{ error_message }}</p>
             {% endif %}
-            {% if chats.exists %}
+            {% if chat.exists %}
                 {% for i in arr %}
-                    <a href="{% url 'chat_new' id1=id1 id2=i.user_id %}">
+                    <a href="{% url 'chat_mod' id=id id1=i.0.user_id id2=i.1.user_id %}">
                         <div class="chat_user" onclick="openChat">
                             <img src="{% static 'chats/image/img.png' %}">
-                            <p class="p">{{ i.login }}</p>
+                            <p class="p">{{ i.0.login }} - {{ i.1.login }}</p>
                         </div>
                     </a>
                 {% endfor %}
             {% else %}
             <p class="p">Чатов нет</p>
             {% endif %}
-        </div>
-        <div class="modal-content hidden">
-            <label >Ник пользователя:</label>
-            <form method="post">
-                {% csrf_token %}
-                {% for field in form %}
-                    <p>{{ field }}</p>  <!-- Отображаем только поле ввода без метки -->
-                {% endfor %}
-                <button type="submit" name="add">Создать чат</button>
-                </form>
         </div>
         <div class="exit">
             <button type="button" id="exitButton">Выход</button>
@@ -49,27 +37,6 @@
             document.getElementById('exitButton').addEventListener('click', function() {
                 window.location.href = '{% url "logout" %}'; // Используем URL-имя для перехода на страницу выхода
             });
-        </script>
-        <script>
-            // Получаем элементы
-            var addChatBtn = document.getElementById("addChatBtn");
-            var addChatBtn1 = document.getElementById("cl");
-            var usersDiv1 = document.querySelector(".users");
-            var usersDiv2 = document.querySelector(".modal-content");
-
-            // Обработчик события для кнопки
-            addChatBtn.onclick = function() {
-                // Переключаем класс hidden у блока users
-                usersDiv1.classList.toggle("hidden");
-                usersDiv2.classList.toggle("hidden");
-                addChatBtn.classList.toggle("hidden");
-            }
-            cl.onclick = function() {
-                // Переключаем класс hidden у блока users
-                usersDiv1.classList.toggle("hidden");
-                usersDiv2.classList.toggle("hidden");
-                addChatBtn.classList.toggle("hidden");
-            }
         </script>
     </div>
     <!--sidebar end-->
@@ -80,19 +47,22 @@
             <form method="post">
                 {% csrf_token %}
                 {% for ch in arr %}
-                    {% if ch.user_id == id2 and ch.status == 0 %}
-                        <button class="button" type="submit" name="block">Заблокировать</button>
-                    {% else %}
-                        {% if ch.user_id == id2 and ch.status == 1 %}
-                            <button class="button" type="submit" name="block">Разблокировать</button>
+                    {% if ch.0.user_id == 1 %}
+                        {% if ch.1.user_id == id2 and ch.1.status == 0 %}
+                            <button class="button" type="submit" name="block">Заблокировать</button>
+                        {% else %}
+                            {% if ch.1.user_id == id2 and ch.1.status == 1 %}
+                                <button class="button" type="submit" name="block">Разблокировать</button>
+                            {% endif %}
                         {% endif %}
                     {% endif %}
                 {% endfor %}
             </form>
             <div class="button"></div>
         {%endif%}
-            {% if chat.exists %}
-                {% for ch in chat %}
+        {% if chat.exists %}
+            {% for ch in chat %}
+                {% if ch.who_user1.user_id == id1 and ch.who_user2.user_id == id2 or ch.who_user1.user_id == id2 and ch.who_user2.user_id == id1 %}
                     {% if ch.otpr_id == id2  and ch.body != "" and ch.body != None %}
                         <div class="container">
                             <img src="{% static 'chats/image/img.png' %}">
@@ -111,10 +81,11 @@
                             <span class="time-right">{{ch.created}}</span>
                         </div>
                     {% endif %}
-                {% endfor %}
-            {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         </div>
-        {% if id1 != 1 and id2 != 1 and us1.status == 0 or id1 == 1 %}
+        {% if id1 == 1 %}
             <form method="post">
                     {% csrf_token %}
                     {% for field in formsend %}
